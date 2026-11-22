@@ -1,7 +1,7 @@
 # Gold Bills
 
 Free, offline apps for Android and Windows that keep a private record of the gold you buy, check that every bill adds up
-(GST in India, VAT in the Gulf), show what you own, and work out zakat.
+(VAT, GST or sales tax, in any country), show what you own, and work out zakat.
 
 **Download:** https://vidulapj.github.io/gold-bills/
 
