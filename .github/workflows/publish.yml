@@ -1,0 +1,33 @@
+name: Publish release
+
+# Files for a new version are pushed to the "release-files" branch (GoldBills.apk, GoldBillAnalyzer-Windows.zip,
+# SHA256SUMS.txt, VERSION, NOTES.md); this turns them into a GitHub release, so the download page's links
+# (releases/latest/download/...) always give the newest version.
+on:
+  push:
+    branches: [release-files]
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: release-files
+      - name: Check the files against their checksums
+        run: |
+          sha256sum -c SHA256SUMS.txt
+          echo "VERSION=$(cat VERSION)" >> "$GITHUB_ENV"
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.VERSION }}
+          name: Gold Bills ${{ env.VERSION }}
+          body_path: NOTES.md
+          make_latest: true
+          files: |
+            GoldBills.apk
+            GoldBillAnalyzer-Windows.zip
+            SHA256SUMS.txt
