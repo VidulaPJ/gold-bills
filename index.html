@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gold Bills — track your gold, check every bill, work out zakat</title>
+<meta name="description" content="Free offline app for Android and Windows: keep your gold bills, check that every bill adds up (GST or VAT), see what you own and work out zakat. Nothing leaves your device.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b8860b'/%3E%3Cpath d='M16 40l8-16h16l8 16z' fill='%23fff4d6'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --gold: #b8860b; --gold-dark: #7a5a08; --gold-light: #fff4d6; --cream: #fffaf0;
+    --ink: #1f1a12; --muted: #6b6152; --line: #eadfc8; --good: #1e7b34; --maroon: #7d1d1d;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+         color: var(--ink); background: var(--cream); line-height: 1.55; }
+  a { color: var(--gold-dark); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  header.top { background: var(--ink); color: #fff; }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .2px; }
+  .brand i { width: 26px; height: 26px; border-radius: 7px; background: var(--gold); display: inline-block; position: relative; }
+  .brand i::after { content: ""; position: absolute; left: 6px; right: 6px; bottom: 7px; height: 8px; background: var(--gold-light);
+                    clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%); }
+  header.top nav a { color: #e9dcc0; text-decoration: none; margin-left: 18px; font-size: 14px; }
+
+  .hero { padding: 56px 0 40px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; }
+  h1 { font-size: clamp(30px, 4.6vw, 46px); line-height: 1.12; margin: 0 0 14px; letter-spacing: -.5px; }
+  h1 em { font-style: normal; color: var(--gold-dark); }
+  .lead { font-size: 18px; color: var(--muted); margin: 0 0 26px; max-width: 34em; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; flex-direction: column; padding: 13px 20px; border-radius: 12px; text-decoration: none;
+         font-weight: 650; min-width: 210px; border: 2px solid var(--gold-dark); }
+  .btn small { font-weight: 450; font-size: 12.5px; opacity: .85; }
+  .btn.primary { background: var(--gold-dark); color: #fff; }
+  .btn.secondary { background: #fff; color: var(--gold-dark); }
+  .btn:hover { filter: brightness(1.06); }
+  .trust { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 18px; font-size: 14px; color: var(--muted); }
+  .trust span::before { content: "✓ "; color: var(--good); font-weight: 700; }
+
+  /* a phone-sized picture of the bill check */
+  .phone { justify-self: center; width: 300px; background: #fff; border-radius: 30px; padding: 14px;
+           box-shadow: 0 20px 50px rgba(80, 60, 10, .18), 0 0 0 9px #211b12; }
+  .phone .bar { background: #7a5a08; color: #fff; border-radius: 16px 16px 6px 6px; padding: 10px 14px; font-weight: 650; font-size: 14px; }
+  .card { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; margin-top: 10px; font-size: 13px; }
+  .card b { display: block; font-size: 13.5px; }
+  .card .row { display: flex; justify-content: space-between; color: var(--muted); }
+  .card .ok { color: var(--good); font-weight: 600; margin-top: 4px; }
+  .card.total { background: var(--gold-light); border-color: #e7cf8f; }
+  .tag { float: right; background: var(--gold); color: #fff; border-radius: 5px; padding: 0 6px; font-size: 11px; font-weight: 700; }
+
+  section { padding: 44px 0; }
+  section.alt { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  h2 { font-size: 27px; margin: 0 0 8px; letter-spacing: -.3px; }
+  .sub { color: var(--muted); margin: 0 0 24px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .feature { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+  section.alt .feature { background: var(--cream); }
+  .feature h3 { margin: 0 0 6px; font-size: 16.5px; }
+  .feature p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  .private { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+  .private ul { margin: 0; padding-left: 20px; }
+  .private li { margin: 6px 0; }
+  .note { background: var(--gold-light); border: 1px solid #ecd59a; border-radius: 12px; padding: 14px 16px; font-size: 15px; }
+
+  .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .steps ol { margin: 0; padding-left: 22px; }
+  .steps li { margin: 7px 0; }
+  code { background: #f4ecda; padding: 1px 5px; border-radius: 5px; font-size: 13px; word-break: break-all; }
+
+  details { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 10px 0; }
+  details summary { cursor: pointer; font-weight: 650; }
+  details p { margin: 8px 0 2px; color: var(--muted); }
+
+  footer { padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+  @media (max-width: 820px) {
+    .hero .wrap, .private, .steps { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; }
+    header.top nav { display: none; }
+    .btn { min-width: 0; flex: 1 1 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><i></i> Gold Bills</div>
+    <nav><a href="#features">Features</a><a href="#private">Privacy</a><a href="#install">Install</a><a href="#faq">FAQ</a></nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Every gold bill, <em>checked</em>.<br>Every gram, accounted for.</h1>
+      <p class="lead">Gold Bills keeps a private record of the gold you buy, checks that each bill adds up — gold value,
+        making, GST or VAT — shows what you own, and works out zakat. It works completely offline.</p>
+      <div class="buttons">
+        <a class="btn primary" href="https://github.com/VidulaPJ/gold-bills/releases/latest/download/GoldBills.apk">
+          Download for Android <small>Android 8 or newer · about 57 MB</small></a>
+        <a class="btn secondary" href="https://github.com/VidulaPJ/gold-bills/releases/latest/download/GoldBillAnalyzer-Windows.zip">
+          Download for Windows <small>Windows 10 or 11 · no install needed</small></a>
+      </div>
+      <div class="trust"><span>Free</span><span>No account</span><span>No ads or tracking</span><span>No internet permission</span></div>
+    </div>
+
+    <div class="phone" aria-label="Example: a three-item bill checked by the app">
+      <div class="bar">Gold Bills &nbsp;🔒 offline</div>
+      <div class="card"><span class="tag">22K</span><b>22KT Gold Chain</b>
+        <div class="row"><span>12.450 g · HUID AB12CD</span><span>₹1,52,389.53</span></div>
+        <div class="ok">✓ Bill adds up · making 8.0%</div></div>
+      <div class="card"><span class="tag">22K</span><b>22KT Gold Ring with Stone</b>
+        <div class="row"><span>3.950 g · HUID K7M3P9</span><span>₹48,273.53</span></div>
+        <div class="ok">✓ Bill adds up · making 5.0%</div></div>
+      <div class="card"><span class="tag">18K</span><b>18KT Gold Earrings</b>
+        <div class="row"><span>5.120 g · HUID Z4Q8R2</span><span>₹53,204.24</span></div>
+        <div class="ok">✓ Bill adds up · making 12.0%</div></div>
+      <div class="card total"><b>TOTAL · 3 entries</b>
+        <div class="row"><span>21.520 g · GST ₹7,394.20</span><span><b>₹2,53,867.29</b></span></div></div>
+    </div>
+  </div>
+</div>
+
+<section class="alt" id="features">
+  <div class="wrap">
+    <h2>What it does</h2>
+    <p class="sub">Made for the way gold is actually bought — bills in several languages, several items per bill, old gold exchanged.</p>
+    <div class="grid">
+      <div class="feature"><h3>Photograph a bill</h3><p>Take a photo or pick an image or PDF. The app reads it on your device — English, Hindi, Arabic and more.</p></div>
+      <div class="feature"><h3>Checks every bill</h3><p>Recalculates gold value, making or wastage, stone and hallmarking charges and tax, and flags totals that don't add up or rates above today's.</p></div>
+      <div class="feature"><h3>Several items, two pages</h3><p>A bill with many pieces becomes one entry per item, each with its own weight, HUID and making. Two-page bills are joined.</p></div>
+      <div class="feature"><h3>India and the Gulf</h3><p>GST at 3%, or 3% on gold with 5% on making; rupees in lakhs; 23K and 20K hallmarks; old-gold exchange. Or VAT in dirhams.</p></div>
+      <div class="feature"><h3>See what you own</h3><p>Totals by item, bill, shop, karat and month: cost with and without tax, cost per gram of pure gold, value at today's rate.</p></div>
+      <div class="feature"><h3>Zakat on gold</h3><p>Pure gold from each bill, gold or silver nisab, worn jewellery in or out — your choice — and the date your gold first reached the nisab.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="private">
+  <div class="wrap private">
+    <div>
+      <h2>Private by design</h2>
+      <ul>
+        <li><b>No internet permission.</b> Android itself blocks the app from any network connection. You can check: Settings → Apps → Gold Bills → Permissions shows no internet access.</li>
+        <li><b>Encrypted on your device</b> with AES-256, with an optional PIN (phone) or password (Windows).</li>
+        <li><b>No account, no ads, no analytics.</b> Nothing about you or your gold is sent anywhere.</li>
+        <li><b>Backups you control:</b> password-protected backup files that work on both the phone and Windows apps.</li>
+      </ul>
+      <p><a href="privacy.html">Read the privacy policy</a></p>
+    </div>
+    <div class="note">
+      <b>Why isn't it on Google Play?</b><br>
+      Google requires new developers to run a 14-day test with 12 testers before an app can be listed. Until then, the app is
+      shared here directly. Each file is signed by the developer and listed with a checksum, so you can confirm it hasn't been changed.
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="install">
+  <div class="wrap">
+    <h2>Install</h2>
+    <p class="sub">Two minutes, once. Updates: download the new version from this page and install it over the old one — your bills stay.</p>
+    <div class="steps">
+      <div class="feature">
+        <h3>Android</h3>
+        <ol>
+          <li>Tap <b>Download for Android</b> above.</li>
+          <li>Open the downloaded <code>GoldBills.apk</code>.</li>
+          <li>If asked, allow your browser or Files app to <b>install unknown apps</b>.</li>
+          <li>If Google Play Protect asks to scan the app, let it — then tap <b>Install</b>.</li>
+          <li>Open Gold Bills and set a PIN.</li>
+        </ol>
+      </div>
+      <div class="feature">
+        <h3>Windows</h3>
+        <ol>
+          <li>Click <b>Download for Windows</b> above.</li>
+          <li>Right-click the zip → <b>Extract All</b>.</li>
+          <li>Open <code>GoldBillAnalyzer.exe</code>.</li>
+          <li>If Windows shows "Windows protected your PC", click <b>More info</b> → <b>Run anyway</b> (the app isn't from the Microsoft Store).</li>
+          <li>Choose a password, or keep the data locked to your Windows account.</li>
+        </ol>
+      </div>
+    </div>
+    <p style="margin-top:18px;font-size:14.5px;color:var(--muted)">Check your download (optional): compare its SHA-256 with
+      <a href="https://github.com/VidulaPJ/gold-bills/releases/latest/download/SHA256SUMS.txt">SHA256SUMS.txt</a>.
+      All versions and release notes: <a href="https://github.com/VidulaPJ/gold-bills/releases">releases</a>.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Questions</h2>
+    <details><summary>Is it really free?</summary><p>Yes. No ads, no subscriptions, no in-app purchases.</p></details>
+    <details><summary>What if I lose or change my phone?</summary><p>Make an encrypted backup in Settings and keep the file somewhere safe (a USB stick, your own drive). Restore it on the new phone or on the Windows app. Because the app never goes online, there is no cloud copy.</p></details>
+    <details><summary>Can it check that my jewellery is real or the HUID genuine?</summary><p>No app can check purity. Gold Bills checks the HUID's format and that the bill's numbers add up; verify each HUID in the BIS CARE app.</p></details>
+    <details><summary>Is the zakat calculation a ruling?</summary><p>No — it's a calculator. Schools and scholars differ on worn jewellery and on the nisab, so both are settings. Follow the view you rely on.</p></details>
+    <details><summary>Which bills does it read?</summary><p>Printed bills from jewellers in India and the Gulf work best: clear, flat photos taken straight on. Always compare what was read with the bill before saving.</p></details>
+    <details><summary>Something is wrong or missing</summary><p>Please <a href="https://github.com/VidulaPJ/gold-bills/issues">report it here</a> — with a photo of the bill if you can (cover your name, phone number and address first).</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Gold Bills — made by Vidula · <a href="privacy.html">Privacy</a> · <a href="https://github.com/VidulaPJ/gold-bills">GitHub</a></span>
+    <span>This site uses no cookies and no trackers.</span>
+  </div>
+</footer>
+</body>
+</html>
