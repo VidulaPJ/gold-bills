@@ -27,7 +27,7 @@
 
   .hero { padding: 56px 0 40px; }
   .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; }
-  h1 { font-size: clamp(30px, 4.6vw, 46px); line-height: 1.12; margin: 0 0 14px; letter-spacing: -.5px; }
+  h1 { font-size: clamp(28px, 4.2vw, 42px); line-height: 1.12; margin: 0 0 14px; letter-spacing: -.5px; }
   h1 em { font-style: normal; color: var(--gold-dark); }
   .lead { font-size: 18px; color: var(--muted); margin: 0 0 26px; max-width: 34em; }
   .buttons { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -115,7 +115,9 @@ header.top nav a { color:#D7E2EC; } header.top nav a:hover { color:#fff; }
 .brand i { background:#D49B27; } .brand i::after { background:#fff; }
 .hero { background:#F4F6F8; }
 h1 { color:#234E70; }
-h1 em { color:#234E70; background: linear-gradient(transparent 62%, rgba(212,155,39,.45) 62%); padding: 0 2px; }
+h1 { text-wrap: balance; }
+h1 em { color:#234E70; text-decoration: underline; text-decoration-color:#D49B27; text-decoration-thickness:.11em;
+        text-underline-offset:.14em; text-decoration-skip-ink: none; }
 .lead { color:#5B6470; }
 .btn.primary { background:#234E70; border-color:#234E70; color:#fff; }
 .btn.secondary { background:#fff; color:#234E70; border-color:#D49B27; }
@@ -149,7 +151,7 @@ footer { border-top:1px solid #E1E6EC; }
 <div class="hero">
   <div class="wrap">
     <div>
-      <h1>Every gold bill, <em>checked</em>.<br>Every gram, accounted for.</h1>
+      <h1>Every gold bill, <em>checked</em>.<br>Every gram, accounted&nbsp;for.</h1>
       <p class="lead">Gold Bills keeps a private record of the gold you buy, checks that each bill adds up — gold value,
         making, GST or VAT — shows what you own, and works out zakat. It works completely offline.</p>
       <div class="buttons">
