@@ -3,9 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#234E70">
 <title>Gold Bills — track your gold, check every bill, work out zakat</title>
 <meta name="description" content="Free offline app for Android and Windows: keep your gold bills, check that every bill adds up (GST or VAT), see what you own and work out zakat. Nothing leaves your device.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b8860b'/%3E%3Cpath d='M16 40l8-16h16l8 16z' fill='%23fff4d6'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23234E70'/%3E%3Cpath d='M16 40l8-16h16l8 16z' fill='%23D49B27'/%3E%3C/svg%3E">
 <style>
   :root {
     --gold: #b8860b; --gold-dark: #7a5a08; --gold-light: #fff4d6; --cream: #fffaf0;
@@ -83,6 +84,38 @@
     header.top nav { display: none; }
     .btn { min-width: 0; flex: 1 1 100%; }
   }
+
+  /* ---- Slate-blue theme (same colours as the apps) ---- */
+/* Palette: Slate Blue #234E70, Warm Ochre Gold #D49B27, Light Cool Gray #F4F6F8, White #FFFFFF, Charcoal #222831 */
+:root { --gold:#D49B27; --gold-dark:#234E70; --gold-light:#FBF3E2; --cream:#F4F6F8; --ink:#222831; --muted:#5B6470;
+        --line:#E1E6EC; --good:#1E7B4A; }
+body { background:#F4F6F8; color:#222831; }
+a { color:#234E70; }
+header.top { background:#234E70; color:#fff; border-bottom:3px solid #D49B27; }
+header.top nav a { color:#D7E2EC; } header.top nav a:hover { color:#fff; }
+.brand i { background:#D49B27; } .brand i::after { background:#fff; }
+.hero { background:#F4F6F8; }
+h1 { color:#234E70; }
+h1 em { color:#234E70; background: linear-gradient(transparent 62%, rgba(212,155,39,.45) 62%); padding: 0 2px; }
+.lead { color:#5B6470; }
+.btn.primary { background:#234E70; border-color:#234E70; color:#fff; }
+.btn.secondary { background:#fff; color:#234E70; border-color:#D49B27; }
+.trust span::before { color:#D49B27; }
+section.alt { background:#FFFFFF; border-color:#E1E6EC; }
+.feature, section.alt .feature { background:#fff; border:1px solid #E1E6EC; border-top:3px solid #D49B27;
+                                 box-shadow: 0 1px 3px rgba(34,40,49,.06); }
+section.alt .feature { background:#F4F6F8; }
+h2 { color:#234E70; } .feature h3 { color:#222831; }
+.phone { background:#fff; box-shadow: 0 24px 50px rgba(35,78,112,.22), 0 0 0 9px #234E70; }
+.phone .bar { background:#234E70; color:#fff; }
+.card { border-color:#E1E6EC; } .card.total { background:#FBF3E2; border-color:#D49B27; }
+.tag { background:#D49B27; color:#222831; }
+.private li b { color:#234E70; }
+.note { background:#fff; border:1px solid #E1E6EC; border-left:4px solid #D49B27; }
+code { background:#EEF2F6; color:#234E70; }
+details { background:#fff; border-color:#E1E6EC; } details summary { color:#234E70; }
+footer { border-top:1px solid #E1E6EC; }
+
 </style>
 </head>
 <body>
