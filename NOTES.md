@@ -1,8 +1,8 @@
-## Gold Bills 2.4
+## Gold Bills 2.4.1
 
-- **Works in any country.** Settings → Country sets the currency, the tax name (VAT, GST, SST, sales tax…), the usual tax rate and how numbers look. 23 countries are listed — India, the Gulf, South and Southeast Asia, the UK, Europe, the US, Canada, Australia, South Africa and more — plus **Other country** to set your own. Where the rate depends on the state or the product, type it once from your bill.
-- Euro-style numbers (1.234,50) for Europe and Turkey; lakh grouping for India, Pakistan, Bangladesh and Nepal.
-- **10K gold** (41.7%, hallmark 417) added.
-- Your saved bills are not changed when you switch country.
+- **Android: each bill now keeps the currency it was paid in.** Switching country in Settings no longer relabels bills you've already saved. Your existing bills keep the currency they showed before updating.
+- If you have bills in more than one currency, the Bills and Analysis tabs show a **Paid in** choice (for example AED / INR). Totals are never added across currencies.
+- The bill form has a **Currency paid in** field, filled in from your country.
+- The Windows app already worked this way and is unchanged (still 2.4).
 
-Everything from 2.3 is included.
+Everything from 2.4 is included: country presets, 10K gold, euro-style numbers.
