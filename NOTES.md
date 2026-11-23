@@ -1,11 +1,7 @@
-## Gold Bills 2.4.2
+## Gold Bills 2.4.3
 
-**Fixes found while testing with sample Indian bills:**
+- **New check: the rate printed on your bill.** Many jewellers print the day's rate at the top ("Today's Rate 22K ₹11,000"). Gold Bills now keeps it with each item and flags any item charged more per gram than that printed rate. If only the 24K rate can be read, the rate for 22K, 18K and others is worked out from it by purity. Your own rates in Settings are still used for bills that print no rate.
 
-- **GST no longer doubled.** When the phone's reader returned the CGST and SGST lines twice, they were added up twice (3% became 6%). Each tax line now counts once.
-- **A bill that doesn't add up stays flagged after saving.** Each item of a multi-item bill now keeps the bill's printed total, and every item shows ⚠ until the items add up to it (or a missing item is added). Works on Android and Windows.
-- **Gold value misread as "0".** The gold rate is now worked out from weight × rate + making = amount, instead of taking the making charge per gram as the rate.
-- **Cleaner item names.** Stray characters such as ".}" or ")" from the reader are removed.
-- **New: Delete all bills** (Android: Settings → Your data, with Undo until you close the app; Windows: toolbar, with Undo straight after).
+Also in 2.4.2: GST no longer doubled when a line is read twice; multi-item bills stay flagged when they don't add up; misread gold values recovered; Delete all bills.
 
-Bills saved with an earlier version keep what was saved: delete and re-add any multi-item bill to get these checks.
+Bills saved with an earlier version have no printed rate stored: re-add a bill to get this check.
