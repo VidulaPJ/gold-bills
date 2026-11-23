@@ -1,6 +1,6 @@
-## Gold Bills 2.4.5
+## Gold Bills 2.4.6
 
-- **Feedback is now a short form.** Send feedback and "Read wrong? Tell us" open a feedback form in your browser, with the app version (and, for a bill that read wrong, the text the app read) already filled in. Look it over, add a line about what went wrong and press Submit. No email app needed.
-- The app still has no internet permission and never sends anything itself: only what you submit in the form is sent. See the updated privacy page.
+- **More careful reading of item rows.** A row's gold value must now match weight × rate closely, so a gross weight that happens to come near the row's amount is no longer taken as the gold value (this mis-read a ring with stones).
+- **Printed rates with a ₹ sign** ("22K: ₹12,850.00") are now read even when the phone reads the ₹ as "%", so each item is checked against the bill's own 22K or 18K rate, not one worked out from 24K.
 
-Also in 2.4.3: each item is checked against the rate printed on its bill.
+Also in 2.4.5: feedback form; 2.4.3: each item checked against the rate printed on its bill.
