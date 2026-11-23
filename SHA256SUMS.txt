@@ -1,2 +1,2 @@
-71eb5a96271830d4246e8bf7ef98edf54ff5a49fbbb42a51c22ba3b2ffaf9efb  GoldBills.apk
+54dfccec5ddcf14c911a88dde2a1d51c65df2b769e43f1bd392247c3bac24d10  GoldBills.apk
 2071eade3eaface67f4e58927d8635ea3031b730c3caf2ddce95a3dffac5af45  GoldBillAnalyzer-Windows.zip
