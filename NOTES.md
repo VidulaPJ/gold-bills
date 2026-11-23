@@ -1,4 +1,8 @@
-## Gold Bills 2.4.7
+## Gold Bills 2.4.8
+
+- **Android:** after Delete…, adding or changing a bill now ends the Undo, so old bills can't come back on top of new ones.
+
+### 2.4.7
 
 - **Android: Delete… on the bills list.** Next to "All" and "Only to check". It deletes every bill, or, if you've searched or filtered, just the bills shown (for example, search a shop's name to remove only its bills). You can **Undo** until you close the app.
 - **Android: the app version is shown** in Settings → Feedback.
