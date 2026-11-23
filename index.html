@@ -289,6 +289,15 @@ footer { border-top:1px solid #E1E6EC; }
   </div>
 </footer>
 <script>
+  // Open at the top, not where the last visit left off; after a jump to a section (Support, FAQ...) take the
+  // "#section" off the address, so reopening or reloading the page doesn't land there again.
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener("click", function () {
+      setTimeout(function () { history.replaceState(null, "", location.pathname + location.search); }, 0);
+    });
+  });
+
   // "Copy" for the UPI ID - runs only on this page, nothing is sent anywhere
   document.getElementById("copy-upi").addEventListener("click", function () {
     var b = this, id = document.getElementById("upi").textContent;
