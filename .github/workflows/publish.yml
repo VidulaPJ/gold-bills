@@ -6,6 +6,8 @@ name: Publish release
 on:
   push:
     branches: [release-files]
+    # only when the app files change; site-only updates must not re-upload (and reset the counts of) the downloads
+    paths: [VERSION, GoldBills.apk, GoldBillAnalyzer-Windows.zip, SHA256SUMS.txt, NOTES.md]
 
 permissions:
   contents: write

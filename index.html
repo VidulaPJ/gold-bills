@@ -4,8 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#234E70">
-<title>Gold Bills — track your gold, check every bill, work out zakat</title>
-<meta name="description" content="Free offline app for Android and Windows: keep your gold bills, check that every bill adds up (VAT, GST or sales tax), see what you own and work out zakat. Works in any country; nothing leaves your device.">
+<title>Gold Bills — free gold bill checker: making charges, GST &amp; rate</title>
+<meta name="description" content="Free offline app for Android and Windows that checks your gold jewellery bill: wrong totals, rates above the rate printed on the bill, making charges and GST. Track the gold you own and work out zakat. Nothing leaves your device.">
+<link rel="canonical" href="https://vidulapj.github.io/gold-bills/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gold Bills — check every gold bill, free &amp; offline">
+<meta property="og:description" content="Snap your jewellery bill: wrong totals and rates above the shop's own printed rate get caught. Free for Android and Windows, no sign-up.">
+<meta property="og:url" content="https://vidulapj.github.io/gold-bills/">
+<meta property="og:image" content="https://vidulapj.github.io/gold-bills/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Gold Bills", "operatingSystem": "Android 8+, Windows 10/11", "applicationCategory": "FinanceApplication", "description": "Checks gold jewellery bills (totals, printed rate, making charges, GST), tracks the gold you own and works out zakat. Works offline.", "url": "https://vidulapj.github.io/gold-bills/", "downloadUrl": "https://github.com/VidulaPJ/gold-bills/releases/latest", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "INR"}, "author": {"@type": "Person", "name": "Vidula"}}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23234E70'/%3E%3Cpath d='M16 40l8-16h16l8 16z' fill='%23D49B27'/%3E%3C/svg%3E">
 <style>
   :root {
@@ -144,7 +153,7 @@ footer { border-top:1px solid #E1E6EC; }
 <header class="top">
   <div class="wrap">
     <div class="brand"><i></i> Gold Bills</div>
-    <nav><a href="#features">Features</a><a href="#private">Privacy</a><a href="#install">Install</a><a href="#faq">FAQ</a><a href="#support">Support</a></nav>
+    <nav><a href="#features">Features</a><a href="#private">Privacy</a><a href="#install">Install</a><a href="guides/">Guides</a><a href="#faq">FAQ</a><a href="#support">Support</a></nav>
   </div>
 </header>
 
@@ -155,9 +164,9 @@ footer { border-top:1px solid #E1E6EC; }
       <p class="lead">Gold Bills keeps a private record of the gold you buy, checks that each bill adds up — gold value,
         making and tax — shows what you own, and works out zakat. It works in any country, completely offline.</p>
       <div class="buttons">
-        <a class="btn primary" href="https://github.com/VidulaPJ/gold-bills/releases/latest/download/GoldBills.apk">
+        <a class="btn primary" href="https://github.com/VidulaPJ/gold-bills/releases/latest/download/GoldBills.apk" data-goatcounter-click="download-android">
           Download for Android <small>Android 8 or newer · about 57 MB</small></a>
-        <a class="btn secondary" href="https://github.com/VidulaPJ/gold-bills/releases/latest/download/GoldBillAnalyzer-Windows.zip">
+        <a class="btn secondary" href="https://github.com/VidulaPJ/gold-bills/releases/latest/download/GoldBillAnalyzer-Windows.zip" data-goatcounter-click="download-windows">
           Download for Windows <small>Windows 10 or 11 · no install needed</small></a>
       </div>
       <div class="trust"><span>Free</span><span>No account</span><span>No ads or tracking</span><span>No internet permission</span></div>
@@ -248,6 +257,21 @@ footer { border-top:1px solid #E1E6EC; }
   </div>
 </section>
 
+<section id="guides" class="alt">
+  <div class="wrap">
+    <h2>Check a gold bill yourself</h2>
+    <p class="sub">Short guides for jewellery bills in India.</p>
+    <div class="grid">
+      <a class="feature" href="guides/how-to-check-gold-bill.html" style="text-decoration:none;color:inherit"><h3>How to check a gold bill</h3><p>The 7 checks, with a worked example.</p></a>
+      <a class="feature" href="guides/gst-on-gold-jewellery.html" style="text-decoration:none;color:inherit"><h3>GST on gold: 3% or 5%?</h3><p>Why it's 3% on the whole bill, making included.</p></a>
+      <a class="feature" href="guides/gold-making-charges.html" style="text-decoration:none;color:inherit"><h3>Making charges &amp; wastage</h3><p>Turn per gram, % and VA into one number.</p></a>
+      <a class="feature" href="guides/hallmark-huid-check.html" style="text-decoration:none;color:inherit"><h3>Hallmark &amp; HUID</h3><p>Read 22K916 and verify the HUID.</p></a>
+      <a class="feature" href="guides/sone-ka-bill-kaise-check-kare.html" style="text-decoration:none;color:inherit" lang="hi"><h3>सोने का बिल कैसे चेक करें</h3><p>हिंदी में पूरी गाइड।</p></a>
+      <a class="feature" href="guides/" style="text-decoration:none;color:inherit"><h3>All guides →</h3><p>Everything in one place.</p></a>
+    </div>
+  </div>
+</section>
+
 <section id="faq">
   <div class="wrap">
     <h2>Questions</h2>
@@ -305,5 +329,6 @@ footer { border-top:1px solid #E1E6EC; }
     if (navigator.clipboard) navigator.clipboard.writeText(id).then(done, function () {});
   });
 </script>
+<script data-goatcounter="https://goldbills.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
